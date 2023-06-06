@@ -17,7 +17,7 @@
         function convertToBatchEcho() {
             var asciiArt = document.getElementById("asciiArt").value;
             var lines = asciiArt.split("\n");
-            var formattedOutput = "";
+            var formattedOutput = "@echo off\n"; // Add @echo off at the top
 
             for (var i = 0; i < lines.length; i++) {
                 var line = lines[i];
