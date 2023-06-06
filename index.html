@@ -21,15 +21,21 @@
 
             for (var i = 0; i < lines.length; i++) {
                 var line = lines[i];
-                line = line.replace(/%/g, "%%");
-                line = line.replace(/\^/g, "^^");
-                line = line.replace(/&/g, "^&");
-                line = line.replace(/</g, "^<");
-                line = line.replace(/>/g, "^>");
-                line = line.replace(/\|/g, "^|");
-                line = line.replace(/!/g, "^^!");
 
-                formattedOutput += "echo " + line + "\n";
+                // Check if the line is empty or contains only whitespace
+                if (line.trim() === "") {
+                    formattedOutput += "echo.\n"; // Output "echo." for empty lines
+                } else {
+                    line = line.replace(/%/g, "%%");
+                    line = line.replace(/\^/g, "^^");
+                    line = line.replace(/&/g, "^&");
+                    line = line.replace(/</g, "^<");
+                    line = line.replace(/>/g, "^>");
+                    line = line.replace(/\|/g, "^|");
+                    line = line.replace(/!/g, "^^!");
+
+                    formattedOutput += "echo " + line + "\n";
+                }
             }
 
             document.getElementById("formattedOutput").value = formattedOutput;
